@@ -1,0 +1,80 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recipes",
+  "info": {
+    "singularName": "recipe",
+    "pluralName": "recipes",
+    "displayName": "Recipe",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": false
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "featured_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "preparing_time": {
+      "type": "integer"
+    },
+    "cooking_time": {
+      "type": "integer"
+    },
+    "serving_for": {
+      "type": "integer"
+    },
+    "ingredients": {
+      "displayName": "ingredients",
+      "type": "component",
+      "repeatable": true,
+      "component": "ingredients.ingredients"
+    },
+    "steps": {
+      "displayName": "steps",
+      "type": "component",
+      "repeatable": true,
+      "component": "steps.steps"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "recipes"
+    },
+    "isOnSlider": {
+      "type": "boolean",
+      "default": false
+    },
+    "gallery_images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "likes": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}
